@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Container Styles
+   ========================================================================== */
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+/* Container Sizes */
+.container-sm {
+    max-width: 640px;
+}
+
+.container-md {
+    max-width: 768px;
+}
+
+.container-lg {
+    max-width: 1024px;
+}
+
+.container-xl {
+    max-width: 1280px;
+}
+
+/* Container Modifiers */
+.container-fluid {
+    max-width: none;
+}
+
+.container-narrow {
+    max-width: 960px;
+}
+
+/* Container Padding Variations */
+.container-px-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container-px-2 {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+}
+
+.container-px-4 {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+.container-px-6 {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+}
+
+.container-px-8 {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+}
+
+/* Responsive Container Padding */
+@media (max-width: 768px) {
+    .container {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding-left: var(--space-2);
+        padding-right: var(--space-2);
+    }
+} 

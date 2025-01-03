@@ -1,0 +1,311 @@
+/* ==========================================================================
+   Home Page Layout
+   ========================================================================== */
+
+/* Main Container */
+.main-container {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    position: relative;
+    -webkit-overflow-scrolling: touch; /* 为iOS添加平滑滚动 */
+}
+
+/* 隐藏滚动条但保持功能 */
+.main-container {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.main-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Sections */
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
+    position: relative;
+    will-change: transform; /* 优化滚动性能 */
+}
+
+/* Work Grid */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-4);
+    padding: var(--space-4);
+    padding-top: calc(var(--header-height) + var(--space-4));
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--color-surface);
+}
+
+.work-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-transform);
+    will-change: transform; /* 优化动画性能 */
+    background-color: var(--color-surface-alt);
+}
+
+.work-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.work-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.work-card:hover .work-card__image {
+    transform: scale(1.05);
+}
+
+.work-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.7) 30%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-4);
+    transform: translateY(10px);
+}
+
+.work-card:hover .work-card__overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.work-card__title {
+    color: var(--color-white);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.work-card__category {
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    opacity: 0.8;
+    transform: translateY(10px);
+    transition: transform 0.3s ease 0.1s;
+}
+
+.work-card:hover .work-card__title,
+.work-card:hover .work-card__category {
+    transform: translateY(0);
+}
+
+/* Card Grid Positions */
+.work-card--1 {
+    grid-column: 1 / span 8;
+    grid-row: 1 / span 2;
+    aspect-ratio: 16/9;
+}
+
+.work-card--2 {
+    grid-column: 9 / span 4;
+    grid-row: 1 / span 1;
+    aspect-ratio: 4/3;
+}
+
+.work-card--3 {
+    grid-column: 9 / span 4;
+    grid-row: 2 / span 1;
+    aspect-ratio: 4/3;
+}
+
+.work-card--4 {
+    grid-column: 1 / span 4;
+    grid-row: 3 / span 1;
+    aspect-ratio: 4/3;
+}
+
+.work-card--5 {
+    grid-column: 5 / span 8;
+    grid-row: 3 / span 2;
+    aspect-ratio: 16/9;
+}
+
+/* About Section */
+.about {
+    padding: var(--space-16) var(--space-4);
+    background-color: var(--color-surface-alt);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-primary),
+        transparent
+    );
+    opacity: 0.3;
+}
+
+.about__content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.about__content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about__title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+    color: var(--color-text);
+    position: relative;
+    display: inline-block;
+}
+
+.about__title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40%;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+.about__description {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    max-width: 60ch;
+}
+
+.about__description p {
+    margin-bottom: var(--space-4);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about__content.active .about__description p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about__content.active .about__description p:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+/* Page Navigation */
+.page-nav {
+    position: fixed;
+    right: var(--space-6);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: var(--z-40);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-2);
+    background: rgba(var(--color-surface-rgb), 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+}
+
+.page-nav__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-text-secondary);
+    opacity: 0.5;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.page-nav__dot::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--color-primary);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.page-nav__dot:hover,
+.page-nav__dot.active {
+    opacity: 1;
+    background-color: var(--color-primary);
+    transform: scale(1.2);
+}
+
+.page-nav__dot.active::before {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        height: auto;
+        min-height: 100vh;
+        padding-top: calc(var(--header-height) + var(--space-2));
+    }
+
+    .work-card {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+        aspect-ratio: 3/2 !important;
+    }
+
+    .about {
+        padding: var(--space-8) var(--space-4);
+    }
+
+    .about__title {
+        font-size: var(--text-2xl);
+    }
+
+    .about__description {
+        font-size: var(--text-base);
+    }
+
+    .page-nav {
+        display: none;
+    }
+} 

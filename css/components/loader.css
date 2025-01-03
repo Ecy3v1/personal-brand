@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Loading Animation
+   ========================================================================== */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    background: var(--surface-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    transition: opacity 0.5s var(--transition-smooth);
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.loader-logo {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    animation: pulse 2s var(--transition-smooth) infinite;
+}
+
+.loader-progress {
+    width: 200px;
+    height: 2px;
+    background: var(--surface-glass);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.loader-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--color-tech),
+        var(--color-sage)
+    );
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.3s var(--transition-smooth);
+}
+
+.loader-text {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    letter-spacing: var(--tracking-wide);
+}
+
+/* Loading States */
+.is-loading {
+    overflow: hidden;
+}
+
+.is-loading .app-container {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.is-loaded .loader {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.is-loaded .app-container {
+    opacity: 1;
+    transform: none;
+    transition: all 0.8s var(--transition-smooth);
+}
+
+.is-ready .loader {
+    display: none;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(0.95);
+    }
+} 

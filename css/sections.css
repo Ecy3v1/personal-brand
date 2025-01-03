@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Section Styles
+   ========================================================================== */
+
+/* Common Section Styles */
+section {
+    padding: var(--space-16) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-4);
+}
+
+.section-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+/* Work Section */
+.work {
+    background-color: var(--surface-primary);
+}
+
+.work .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+/* Skills Section */
+.skills {
+    background-color: var(--surface-secondary);
+}
+
+/* About Section */
+.about {
+    background-color: var(--surface-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    section {
+        padding: var(--space-12) 0;
+    }
+
+    .section-header {
+        margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+        font-size: var(--text-3xl);
+    }
+
+    .section-subtitle {
+        font-size: var(--text-base);
+    }
+} 

@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Custom Cursor
+   ========================================================================== */
+
+/* Hide Default Cursor */
+body {
+    cursor: none;
+}
+
+a, button, [role="button"] {
+    cursor: none;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-red);
+    border-radius: var(--radius-full);
+    pointer-events: none;
+    z-index: var(--z-maximum);
+    transition: width 0.3s var(--transition-bounce),
+                height 0.3s var(--transition-bounce),
+                background-color 0.3s var(--transition-ease),
+                transform 0.1s var(--transition-ease);
+}
+
+/* Cursor States */
+.custom-cursor::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-red);
+    border-radius: var(--radius-full);
+    transition: transform 0.3s var(--transition-bounce);
+}
+
+.custom-cursor.cursor--hover {
+    width: 40px;
+    height: 40px;
+    background: rgba(var(--color-red-rgb), 0.1);
+    mix-blend-mode: difference;
+}
+
+.custom-cursor.cursor--hover::after {
+    transform: scale(1.5);
+}
+
+.custom-cursor.cursor--hidden {
+    opacity: 0;
+}
+
+.custom-cursor.cursor--text {
+    width: 4px;
+    height: 24px;
+    border: none;
+    background: var(--accent-red);
+    mix-blend-mode: difference;
+}
+
+.custom-cursor.cursor--text::after {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+
+    a, button, [role="button"] {
+        cursor: pointer;
+    }
+
+    .custom-cursor {
+        display: none;
+    }
+} 

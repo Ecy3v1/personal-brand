@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Decorative Elements
+   ========================================================================== */
+
+.decorative-element {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    will-change: transform;
+    z-index: 1;
+}
+
+/* Shapes */
+.decorative-element.shape-circle {
+    border-radius: 50%;
+    background: var(--color-accent);
+    filter: blur(5px);
+}
+
+.decorative-element.shape-square {
+    background: var(--color-primary);
+    transform-origin: center;
+    filter: blur(3px);
+}
+
+.decorative-element.shape-triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 43.3px solid var(--color-secondary);
+    background: transparent;
+    filter: blur(2px);
+}
+
+.decorative-element.shape-squiggle {
+    background: transparent;
+    border: 4px solid var(--color-accent);
+    border-radius: 50%;
+    animation: squiggle 10s infinite linear;
+}
+
+/* Animations */
+@keyframes squiggle {
+    0% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+    }
+    100% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    }
+}
+
+/* Hover Effects */
+.decorative-element:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .decorative-element {
+        opacity: 0.3;
+    }
+} 

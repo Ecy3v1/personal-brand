@@ -1,0 +1,392 @@
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Slide Up */
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+    opacity: 1;
+}
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease forwards;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+    transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.scale-in {
+    animation: scaleIn 0.6s ease forwards;
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-screen__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-max);
+}
+
+.loading-screen__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.loading-screen__text {
+    color: var(--color-text);
+    font-size: var(--text-lg);
+    font-weight: 500;
+}
+
+/* Stagger Animation Delays */
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+/* Intersection Observer Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse:hover {
+    animation: pulse 1s ease infinite;
+}
+
+/* Text Animations */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--color-primary);
+    animation: 
+        typewriter 2s steps(40, end) forwards,
+        blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--color-primary);
+    }
+}
+
+/* Card Entrance Animations */
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.work-card {
+    animation: cardEntrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-play-state: paused;
+}
+
+.work-card.active {
+    animation-play-state: running;
+}
+
+/* Staggered Delay for Cards */
+.work-card--1 { animation-delay: 0.1s; }
+.work-card--2 { animation-delay: 0.2s; }
+.work-card--3 { animation-delay: 0.3s; }
+.work-card--4 { animation-delay: 0.4s; }
+
+/* Hover Animation for Card Images */
+@keyframes imageFloat {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.05);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.work-card:hover .work-card__image {
+    animation: imageFloat 3s ease-in-out infinite;
+}
+
+/* Title Reveal Animation */
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.work-card:hover .work-card__title {
+    animation: titleReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Overlay Fade Animation */
+@keyframes overlayFade {
+    from {
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            transparent
+        );
+    }
+    to {
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0, 0, 0, 0.8)
+        );
+    }
+}
+
+.work-card:hover .work-card__overlay {
+    animation: overlayFade 0.5s ease-out forwards;
+}
+
+/* Loading Screen Animation */
+@keyframes loadingProgress {
+    from {
+        width: 0;
+        opacity: 1;
+    }
+    to {
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+.loading-screen__progress {
+    height: 2px;
+    background-color: var(--color-primary);
+    animation: loadingProgress 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Page Transition */
+@keyframes pageTransition {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-enter {
+    animation: pageTransition 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Comic Panel Animations */
+@keyframes panelPop {
+    0% {
+        transform: scale(0.8) rotate(-5deg);
+        opacity: 0;
+    }
+    40% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    60% {
+        transform: scale(0.9) rotate(-1deg);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+.work-card.active {
+    animation: panelPop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Speech Bubble Animation */
+@keyframes bubblePop {
+    0% {
+        transform: scale(0) rotate(15deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(-5deg);
+    }
+    100% {
+        transform: scale(1) rotate(-3deg);
+        opacity: 1;
+    }
+}
+
+.work-card:hover .work-card__bubble {
+    animation: bubblePop 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Action Lines Animation */
+@keyframes actionLines {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateX(0);
+    }
+}
+
+.work-card:hover::after {
+    animation: actionLines 0.3s ease forwards;
+}
+
+/* Star Sparkle Animation */
+@keyframes starSparkle {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.work-card::before {
+    animation: starSparkle 2s ease infinite;
+}
+
+/* Title Impact Animation */
+@keyframes titleImpact {
+    0% {
+        transform: translateY(20px) scale(0.8);
+    opacity: 0;
+    }
+    40% {
+        transform: translateY(-5px) scale(1.1);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.work-card:hover .work-card__title {
+    animation: titleImpact 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Panel Shake Animation */
+@keyframes panelShake {
+    0%, 100% {
+        transform: rotate(-1deg);
+    }
+    25% {
+        transform: rotate(1deg);
+    }
+    50% {
+        transform: rotate(-0.5deg);
+    }
+    75% {
+        transform: rotate(0.5deg);
+    }
+}
+
+.work-card:hover {
+    animation: panelShake 0.3s ease-in-out;
+} 

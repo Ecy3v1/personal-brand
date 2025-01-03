@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Animation Utilities
+   ========================================================================== */
+
+/* Fade */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-in {
+    animation: fadeIn var(--transition-duration) var(--transition-ease);
+}
+
+.fade-out {
+    animation: fadeOut var(--transition-duration) var(--transition-ease);
+}
+
+/* Slide */
+@keyframes slideInRight {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.slide-in-right {
+    animation: slideInRight var(--transition-duration) var(--transition-ease);
+}
+
+.slide-in-left {
+    animation: slideInLeft var(--transition-duration) var(--transition-ease);
+}
+
+.slide-in-up {
+    animation: slideInUp var(--transition-duration) var(--transition-ease);
+}
+
+.slide-in-down {
+    animation: slideInDown var(--transition-duration) var(--transition-ease);
+}
+
+/* Scale */
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes scaleOut {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
+
+.scale-in {
+    animation: scaleIn var(--transition-duration) var(--transition-bounce);
+}
+
+.scale-out {
+    animation: scaleOut var(--transition-duration) var(--transition-bounce);
+}
+
+/* Rotate */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+}
+
+.spin-reverse {
+    animation: spinReverse 2s linear infinite;
+}
+
+/* Bounce */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.bounce {
+    animation: bounce 2s var(--transition-bounce) infinite;
+}
+
+/* Pulse */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pulse {
+    animation: pulse 2s var(--transition-ease) infinite;
+}
+
+/* Shake */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.8s var(--transition-ease);
+}
+
+/* Glitch */
+@keyframes glitch {
+    0% {
+        clip-path: inset(71% 0 10% 0);
+        transform: translate(-2px, 2px);
+    }
+    20% {
+        clip-path: inset(29% 0 71% 0);
+        transform: translate(2px, -2px);
+    }
+    40% {
+        clip-path: inset(57% 0 43% 0);
+        transform: translate(2px, 2px);
+    }
+    60% {
+        clip-path: inset(14% 0 86% 0);
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        clip-path: inset(86% 0 14% 0);
+        transform: translate(2px, 2px);
+    }
+    100% {
+        clip-path: inset(71% 0 10% 0);
+        transform: translate(-2px, -2px);
+    }
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--accent-red);
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--accent-blue);
+    animation: glitch 3s infinite linear alternate-reverse;
+}
+
+/* Animation Utilities */
+.animate-once {
+    animation-iteration-count: 1;
+}
+
+.animate-twice {
+    animation-iteration-count: 2;
+}
+
+.animate-thrice {
+    animation-iteration-count: 3;
+}
+
+.animate-infinite {
+    animation-iteration-count: infinite;
+}
+
+.animate-fast {
+    animation-duration: 0.5s;
+}
+
+.animate-slow {
+    animation-duration: 2s;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.3s;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+} 

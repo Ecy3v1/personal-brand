@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Visual Effects
+   ========================================================================== */
+
+/* Glitch Effect */
+.glitch {
+    position: relative;
+    animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+    left: -2px;
+    text-shadow: 2px 0 var(--color-red);
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: 2px;
+    text-shadow: -2px 0 var(--color-yellow);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    2%, 64% { transform: translate(2px, 0) skew(0deg); }
+    4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+    62% { transform: translate(0, 0) skew(5deg); }
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(1px, 9999px, 1px, 0); }
+    5% { clip: rect(5px, 9999px, 10px, 0); }
+    10% { clip: rect(10px, 9999px, 20px, 0); }
+    15% { clip: rect(20px, 9999px, 30px, 0); }
+    20% { clip: rect(30px, 9999px, 40px, 0); }
+    25% { clip: rect(40px, 9999px, 50px, 0); }
+}
+
+/* Noise Texture */
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.05;
+    z-index: var(--z-maximum);
+}
+
+.noise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: noise 1s steps(2) infinite;
+}
+
+@keyframes noise {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -5%); }
+    20% { transform: translate(-10%, 5%); }
+    30% { transform: translate(5%, -10%); }
+    40% { transform: translate(-5%, 15%); }
+    50% { transform: translate(-10%, 5%); }
+    60% { transform: translate(15%, 0); }
+    70% { transform: translate(0, 10%); }
+    80% { transform: translate(-15%, 0); }
+    90% { transform: translate(10%, 5%); }
+}
+
+/* Distortion Effect */
+.distort {
+    position: relative;
+    overflow: hidden;
+}
+
+.distort::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 65%,
+        rgba(255, 61, 61, 0.1) 75%,
+        rgba(255, 214, 0, 0.1) 85%
+    );
+    mix-blend-mode: color-dodge;
+    pointer-events: none;
+    transform: translateX(-100%);
+    animation: distort 3s ease infinite;
+}
+
+@keyframes distort {
+    0% { transform: translateX(-100%) skewX(-10deg); }
+    50% { transform: translateX(100%) skewX(-10deg); }
+    100% { transform: translateX(100%) skewX(-10deg); }
+}
+
+/* Scanlines */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: var(--z-maximum);
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.05) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 0.2s linear infinite;
+}
+
+@keyframes scanlines {
+    from { background-position: 0 0; }
+    to { background-position: 0 4px; }
+}
+
+/* Hover Glow */
+.hover-glow {
+    position: relative;
+    transition: all 0.3s var(--transition-snappy);
+}
+
+.hover-glow::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        var(--color-red) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s var(--transition-snappy);
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
+}
+
+.hover-glow:hover::before {
+    opacity: 0.5;
+}
+
+/* Tilt Effect */
+.tilt {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.3s var(--transition-snappy);
+}
+
+.tilt:hover {
+    transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .glitch,
+    .noise,
+    .distort,
+    .scanlines,
+    .hover-glow,
+    .tilt {
+        animation: none;
+        transform: none;
+        transition: none;
+    }
+    
+    .glitch::before,
+    .glitch::after,
+    .noise::before,
+    .distort::before,
+    .hover-glow::before {
+        display: none;
+    }
+} 

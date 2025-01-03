@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional portfolio showcasing creative works and projects">
+  <meta name="keywords" content="portfolio, projects, creative, design, development">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="/styles/portfolio.css">
+  <link rel="stylesheet" href="/styles/ai-assistant.css">
+</head>
+<body>
+  <div id="loader" class="loader"></div>
+  
+  <div class="app-container">
+    <main class="main-content">
+      <section class="hero-section" aria-label="Introduction">
+        <div class="container">
+          <h1 class="hero-title">创意作品集</h1>
+          <p class="hero-description">探索设计与开发的无限可能</p>
+        </div>
+      </section>
+      
+      <section class="portfolio-section" aria-label="Portfolio">
+        <div class="container">
+          <h2 class="section-title">精选项目</h2>
+          <div class="portfolio-grid">
+            <% if (typeof projectsData !== 'undefined' && projectsData.length > 0) { %>
+                <% projectsData.forEach((project, index) => { %>
+                    <article class="portfolio-card <%= project.type %>"
+                        data-index="<%= index %>"
+                        style="animation-delay: <%= index * 0.1 %>s;"
+                        >
+                        <header class="card-header">
+                            <div class="card-category"><%= project.category %></div>
+                            <h3 class="card-title"><%= project.title %></h3>
+                            <div class="card-subtitle"><%= project.subtitle %></div>
+                        </header>
+                        <div class="card-content">
+                            <p class="card-description"><%= project.description %></p>
+                        </div>
+                        <footer class="card-footer">
+                            <button class="card-btn">了解更多</button>
+                        </footer>
+                    </article>
+                <% }); %>
+            <% } else { %>
+                <div class="debug-info">暂无项目数据</div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html> 

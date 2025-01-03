@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视觉效果预览 - 提拉迷失</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-primary">
+    <div class="container">
+        <!-- 标题部分 -->
+        <header class="mt-16 mb-16 text-center">
+            <h1 class="glitch font-display text-4xl mb-4" data-text="提拉迷失">提拉迷失</h1>
+            <p class="gradient-text font-mono text-lg">视觉效果预览页面</p>
+        </header>
+
+        <!-- 文本效果展示 -->
+        <section class="mb-16">
+            <h2 class="gradient-text--punk font-display text-2xl mb-8">文本效果</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <div class="glass p-8 rounded-lg">
+                    <h3 class="glitch mb-4" data-text="故障文本效果">故障文本效果</h3>
+                    <p class="gradient-text mb-4">渐变文本效果</p>
+                    <p class="gradient-text--cyber mb-4">赛博渐变效果</p>
+                    <p class="gradient-text--neon">霓虹渐变效果</p>
+                </div>
+                <div class="glass p-8 rounded-lg">
+                    <h3 class="distort mb-4">扭曲效果</h3>
+                    <p class="text-gradient mb-4">文本渐变</p>
+                    <p class="corner-accent mb-4">角落装饰</p>
+                    <p class="scanlines">扫描线效果</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 卡片效果展示 -->
+        <section class="mb-16">
+            <h2 class="gradient-text--cyber font-display text-2xl mb-8">卡片效果</h2>
+            <div class="grid grid-cols-3 gap-8">
+                <!-- 基础卡片 -->
+                <div class="card">
+                    <div class="card__image">
+                        <img src="https://picsum.photos/400/225" alt="示例图片">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">基础卡片</h3>
+                        <p class="card__text">展示基础的卡片悬浮效果</p>
+                    </div>
+                </div>
+
+                <!-- 发光卡片 -->
+                <div class="card glow">
+                    <div class="card__image">
+                        <img src="https://picsum.photos/400/225" alt="示例图片">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">发光卡片</h3>
+                        <p class="card__text">展示发光效果的卡片</p>
+                    </div>
+                </div>
+
+                <!-- 故障卡片 -->
+                <div class="card noise">
+                    <div class="card__image">
+                        <img src="https://picsum.photos/400/225" alt="示例图片">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">噪点卡片</h3>
+                        <p class="card__text">展示噪点效果的卡片</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 按钮效果展示 -->
+        <section class="mb-16">
+            <h2 class="gradient-text--neon font-display text-2xl mb-8">按钮效果</h2>
+            <div class="grid grid-cols-4 gap-8">
+                <button class="button">基础按钮</button>
+                <button class="button glow">发光按钮</button>
+                <button class="button distort">扭曲按钮</button>
+                <button class="button noise">噪点按钮</button>
+            </div>
+        </section>
+
+        <!-- 背景效果展示 -->
+        <section class="mb-16">
+            <h2 class="gradient-text font-display text-2xl mb-8">背景效果</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <!-- 网格背景 -->
+                <div class="glass grid-overlay p-8 rounded-lg">
+                    <h3 class="mb-4">网格背景</h3>
+                    <p>展示网格叠加效果</p>
+                </div>
+
+                <!-- 扫描线背景 -->
+                <div class="glass scanlines p-8 rounded-lg">
+                    <h3 class="mb-4">扫描线背景</h3>
+                    <p>展示扫描线效果</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 装饰效果展示 -->
+        <section class="mb-16">
+            <h2 class="gradient-text--punk font-display text-2xl mb-8">装饰效果</h2>
+            <div class="grid grid-cols-3 gap-8">
+                <!-- 角落装饰 -->
+                <div class="glass corner-accent p-8 rounded-lg">
+                    <h3 class="mb-4">角落装饰</h3>
+                    <p>展示角落装饰效果</p>
+                </div>
+
+                <!-- 有机形状 -->
+                <div class="glass p-8 rounded-lg" style="min-height: 200px; position: relative; overflow: hidden;">
+                    <div class="organic-shape organic-shape--1"></div>
+                    <div class="organic-shape organic-shape--2"></div>
+                    <h3 class="mb-4 relative z-elevate">有机形状</h3>
+                    <p class="relative z-elevate">展示有机形状效果</p>
+                </div>
+
+                <!-- 混合效果 -->
+                <div class="glass glow noise p-8 rounded-lg">
+                    <h3 class="mb-4">混合效果</h3>
+                    <p>展示多种效果叠加</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 交互元素展示 -->
+        <section class="mb-16">
+            <h2 class="gradient-text--cyber font-display text-2xl mb-8">交互元素</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <!-- 输入框 -->
+                <div class="glass p-8 rounded-lg">
+                    <div class="input-group mb-4">
+                        <input type="text" class="input-group__input" placeholder="输入一些文字">
+                        <label class="input-group__label">输入框效果</label>
+                    </div>
+                </div>
+
+                <!-- 工具提示 -->
+                <div class="glass p-8 rounded-lg">
+                    <span class="tooltip" data-tooltip="这是一个工具提示">
+                        悬浮查看提示
+                    </span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 全局装饰 -->
+    <div class="noise fixed inset-0 pointer-events-none"></div>
+</body>
+</html> 

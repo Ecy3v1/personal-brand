@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Texture Styles
+   ========================================================================== */
+
+/* Paper Background */
+.texture-paper {
+    position: relative;
+    background-color: var(--color-background);
+    background-image: var(--texture-paper);
+    background-size: 500px;
+    background-repeat: repeat;
+}
+
+.texture-paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--texture-noise);
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+/* Vintage Paper Card */
+.vintage-card {
+    position: relative;
+    background-color: var(--color-surface);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+.vintage-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--texture-paper);
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+/* Retro Text Effects */
+.text-retro {
+    font-family: var(--font-serif);
+    letter-spacing: 0.02em;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.text-handwritten {
+    font-family: var(--font-handwriting);
+    font-size: 1.2em;
+    line-height: 1.4;
+    transform: rotate(-2deg);
+}
+
+/* Vintage Borders */
+.border-vintage {
+    border: 2px solid var(--color-text);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    transition: var(--transition-all);
+}
+
+.border-vintage:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Retro Decorative Elements */
+.decoration-corner {
+    position: relative;
+}
+
+.decoration-corner::before,
+.decoration-corner::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-text);
+    opacity: 0.6;
+}
+
+.decoration-corner::before {
+    top: -10px;
+    left: -10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.decoration-corner::after {
+    bottom: -10px;
+    right: -10px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Vintage Image Effects */
+.image-vintage {
+    position: relative;
+    filter: sepia(20%) contrast(1.1);
+}
+
+.image-vintage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        transparent 60%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+/* Retro Hover Effects */
+.hover-lift {
+    transition: var(--transition-transform);
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px) rotate(1deg);
+} 

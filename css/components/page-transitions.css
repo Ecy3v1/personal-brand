@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Page Transitions
+   ========================================================================== */
+
+.section-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    will-change: transform;
+}
+
+/* Section specific adjustments */
+.hero-section,
+.work-section,
+.about-section {
+    min-height: unset;
+    height: 100vh;
+    position: relative;
+}
+
+/* Transition overlay */
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    z-index: var(--z-max);
+    pointer-events: none;
+}
+
+/* Progress indicator */
+.scroll-progress {
+    position: fixed;
+    right: var(--space-4);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    z-index: var(--z-30);
+}
+
+.scroll-progress__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-text-tertiary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-progress__dot:hover {
+    background-color: var(--color-text-secondary);
+}
+
+.scroll-progress__dot.active {
+    background-color: var(--color-primary);
+    transform: scale(1.5);
+} 
